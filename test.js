@@ -1,6 +1,6 @@
 // Function to parse the input and decode the y values
-function parseInput(jsonInput) {
-    const data = JSON.parse(jsonInput);
+function parseInput(jsonInput2) {
+    const data = JSON.parse(jsonInput2);
     
     const n = data.keys.n;
     const k = data.keys.k;
@@ -39,12 +39,14 @@ function lagrangeInterpolation(points) {
     }
     
     return Math.round(c);
+    // return c.toFixed(6);  // Adjust precision to six decimal places
+
 }
 
 // Main function
-function findConstantTerm(jsonInput) {
+function findConstantTerm(jsonInput2) {
     // Step 1: Parse the input
-    const { n, k, points } = parseInput(jsonInput);
+    const { n, k, points } = parseInput(jsonInput2);
     
     // Step 2: Apply Lagrange interpolation to find the constant term
     const constantTerm = lagrangeInterpolation(points.slice(0, k));
@@ -78,6 +80,51 @@ const jsonInput = `
     }
 }
 `;
+const jsonInput2 =`
+{
+    "keys": {
+        "n": 9,
+        "k": 6
+    },
+    "1": {
+        "base": "10",
+        "value": "28735619723837"
+    },
+    "2": {
+        "base": "16",
+        "value": "1A228867F0CA"
+    },
+    "3": {
+        "base": "12",
+        "value": "32811A4AA0B7B"
+    },
+    "4": {
+        "base": "11",
+        "value": "917978721331A"
+    },
+    "5": {
+        "base": "16",
+        "value": "1A22886782E1"
+    },
+    "6": {
+        "base": "10",
+        "value": "28735619654702"
+    },
+    "7": {
+        "base": "14",
+        "value": "71AB5070CC4B"
+    },
+    "8": {
+        "base": "9",
+        "value": "122662581541670"
+    },
+    "9": {
+        "base": "8",
+        "value": "642121030037605"
+    }
+}
+`;
+
 
 // Run the function with the provided input
-findConstantTerm(jsonInput);
+findConstantTerm(jsonInput2);
